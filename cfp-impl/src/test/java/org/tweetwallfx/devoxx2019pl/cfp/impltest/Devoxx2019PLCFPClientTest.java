@@ -23,11 +23,18 @@
  */
 package org.tweetwallfx.devoxx2019pl.cfp.impltest;
 
+import org.junit.Test;
 import org.tweetwallfx.devoxx.cfp.test.CFPClientTestBase;
 
 public class Devoxx2019PLCFPClientTest extends CFPClientTestBase {
 
     public Devoxx2019PLCFPClientTest() {
-        super("friday", "b_amphi", "BUB-3972");
+        super("tuesday", "RoomLAB2", "IGI-8938");
+    }
+
+    @Test
+    @Override
+    public void speakerAvatarsAreLoadable() {
+        super.speakerAvatarsAreLoadable();
     }
 }
