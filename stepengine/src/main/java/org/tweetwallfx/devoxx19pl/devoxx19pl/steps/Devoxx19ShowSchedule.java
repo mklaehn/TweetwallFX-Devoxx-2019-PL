@@ -152,6 +152,5 @@ public class Devoxx19ShowSchedule implements Step {
 
         public double layoutX = 0;
         public double layoutY = 0;
-
     }
 }

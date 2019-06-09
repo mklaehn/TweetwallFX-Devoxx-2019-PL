@@ -69,8 +69,8 @@ public class FadeInCloudStep implements Step {
     public boolean shouldSkip(MachineContext context) {
         List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
         return sortedWords.isEmpty();
-    }    
-    
+    }
+
     @Override
     public void doStep(final MachineContext context) {
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
@@ -106,7 +106,7 @@ public class FadeInCloudStep implements Step {
                 config.height));
 
         WritableImage writableImage = new WritableImage((int)config.width, (int) config.height);
-        wordleSkin.getNode().snapshot(snapshotParameters, 
+        wordleSkin.getNode().snapshot(snapshotParameters,
                 writableImage);
 
         ImageView snapCopy = new ImageView(writableImage);
@@ -168,13 +168,12 @@ public class FadeInCloudStep implements Step {
             return Arrays.asList(TagCloudDataProvider.class);
         }
     }
-   
+
     public static class Config extends AbstractConfig {
         public double layoutX = 0;
         public double layoutY = 0;
         public double width = 0;
         public double height = 0;
-        public int tagLength = 15;       
+        public int tagLength = 15;
     }
-            
 }

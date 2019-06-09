@@ -73,7 +73,7 @@ public class CloudFadeOutStep implements Step {
                     -> wordleSkin.getPane().getChildren().remove(node));
             fadeOutTransitions.add(ft);
         });
-                
+
         wordleSkin.word2TextMap.clear();
 
         ParallelTransition fadeLOuts = new ParallelTransition();

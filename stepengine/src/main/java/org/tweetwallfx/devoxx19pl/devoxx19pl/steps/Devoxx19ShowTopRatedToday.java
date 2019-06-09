@@ -136,11 +136,11 @@ public class Devoxx19ShowTopRatedToday implements Step {
     public boolean shouldSkip(final MachineContext context) {
         return context.getDataProvider(TopTalksTodayDataProvider.class).getFilteredSessionData().isEmpty();
     }
-    
+
     @Override
     public Duration preferredStepDuration(MachineContext context) {
         return java.time.Duration.ofMillis(config.stepDuration);
-    }    
+    }
 
     /**
      * Implementation of {@link Step.Factory} as Service implementation creating
@@ -166,11 +166,10 @@ public class Devoxx19ShowTopRatedToday implements Step {
             );
         }
     }
-    
+
     public static class Config extends AbstractConfig {
 
         public double layoutX = 0;
         public double layoutY = 0;
-
-    }    
+    }
 }

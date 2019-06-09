@@ -80,7 +80,7 @@ public class Devoxx19FlipInTweets implements Step {
 
         List<Tweet> tweets = dataProvider.getTweets();
         for (int i = 0; i < Math.min(tweets.size(), config.numberOfTweetsToDisplay); i++) {
-            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);            
+            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);
             tweet.setMaxWidth(config.tweetWidth + 64 + 10);
             tweet.getStyleClass().add("tweetDisplay");
             DropShadow dropShadow = new DropShadow();
@@ -179,7 +179,7 @@ public class Devoxx19FlipInTweets implements Step {
             );
         }
     }
-    
+
     public static class Config extends AbstractConfig {
 
         public double layoutX = 0;
@@ -187,6 +187,5 @@ public class Devoxx19FlipInTweets implements Step {
         public double numberOfTweetsToDisplay = 7;
         public double tweetWidth = 600;
         public double tweetGap = 20;
-
-    }    
+    }
 }

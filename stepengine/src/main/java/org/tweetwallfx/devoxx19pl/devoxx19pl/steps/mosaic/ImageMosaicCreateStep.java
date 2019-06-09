@@ -69,11 +69,11 @@ public class ImageMosaicCreateStep implements Step {
         System.err.println("Images loaded: " + dataProvider.getImages().size());
         return dataProvider.getImages().size() < config.minNoImages;
     }
-    
+
     @Override
     public void doStep(final MachineContext context) {
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
-                
+
         context.put("mosaicImages", rects);
         context.put("mosaicBounds", bounds);
         context.put("mosaicConfig", config);
@@ -88,7 +88,7 @@ public class ImageMosaicCreateStep implements Step {
     @Override
     public java.time.Duration preferredStepDuration(MachineContext context) {
         return java.time.Duration.ofMillis(config.stepDuration);
-    }    
+    }
 
     private Transition createMosaicTransition(final List<ImageStore> imageStores) {
         final SequentialTransition fadeIn = new SequentialTransition();
@@ -145,7 +145,7 @@ public class ImageMosaicCreateStep implements Step {
             return Arrays.asList(ImageMosaicDataProvider.class);
         }
     }
-    
+
     public static class Config extends AbstractConfig {
 
         public Double width = null;
@@ -155,6 +155,5 @@ public class ImageMosaicCreateStep implements Step {
         public int rows = 6;
         public int columns = 5;
         public int minNoImages = 30;
-
-    }    
+    }
 }

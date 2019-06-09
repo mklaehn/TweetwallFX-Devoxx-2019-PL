@@ -81,7 +81,7 @@ public class ConfiguredStepsLoadableTest {
         for (final Step.Factory o : ServiceLoader.load(Step.Factory.class)) {
             availableStepFactories.add(o.getStepClass().getName());
         }
-        
+
         Assert.assertThat(
                 availableStepFactories,
                 CoreMatchers.hasItem(stepName));
