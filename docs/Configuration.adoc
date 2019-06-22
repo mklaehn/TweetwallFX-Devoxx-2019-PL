@@ -25,13 +25,13 @@ This property sets the value of the day used for displaying schedule based data 
 
 Example values may be:
 
-* monday
-* tuesday
-* wednesday
-* thursday 
-* friday
-* saturday
-* sunday
+* `monday`
+* `tuesday`
+* `wednesday`
+* `thursday`
+* `friday`
+* `saturday`
+* `sunday`
 
 === org.tweetwallfx.scheduledata.time ===
 
@@ -41,9 +41,9 @@ This property sets the value of the time used for displaying schedule based data
 
 Example values may be:
 
-* 10:00Z
-* 09:53Z
-* 14:15Z
+* `10:00Z`
+* `09:53Z`
+* `14:15Z`
 
 === org.tweetwallfx.scheduledata.proposal ===
 
@@ -53,6 +53,6 @@ This property sets the ID of a Talk to display.
 
 Example values may be:
 
-* CTH-5247
+* `CTH-5247`
 * or any other Talk ID from the CFP.
 
