@@ -1,6 +1,8 @@
+:toc:
+
 = Ways to configure Tweetwall =
 
-:toc:
+TODO: Short description
 
 == Configuration File ==
 
