@@ -1,5 +1,7 @@
 = Ways to configure Tweetwall =
 
 include::ConfigurationJson.adoc[]
+
 include::ConfigurationFxml.adoc[]
+
 include::ConfigurationRuntime.adoc[]
