@@ -1,8 +1,14 @@
 = Ways to configure Tweetwall =
 
-include::ConfigurationJson.adoc[]
+:toc:
 
-include::ConfigurationFxml.adoc[]
+== Configuration File ==
+
+
+
+== FXML / CSS ==
+
+
 
 == System Properties ==
 
