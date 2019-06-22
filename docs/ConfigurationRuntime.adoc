@@ -1,0 +1,16 @@
+== System Properties ==
+
+Certain values are configurable via System Properties. They can be set e.g. by adding a jvmArg on a JavaExec task in gradle or any similiar way.
+
+=== org.tweetwallfx.scheduledata.day ===
+
+
+tuesday
+
+=== org.tweetwallfx.scheduledata.time ===
+
+10:00Z
+
+=== org.tweetwallfx.scheduledata.proposal ===
+
+CTH-5247
