@@ -46,10 +46,10 @@ TODO: Add content
         "debugEnabled" : true,
         "extendedMode" : true,
         "oauth" : {
-            "consumerKey" : "CONSUMER_KEY", // <1>
-            "consumerSecret" : "CONSUMER_SECRET", # <2>
-            "accessToken" : "ACCESS_TOKEN", ;; <3>
-            "accessTokenSecret" : "ACCESS_TOKEN_SECRET" <4>
+            "consumerKey" : "CONSUMER_KEY",
+            "consumerSecret" : "CONSUMER_SECRET",
+            "accessToken" : "ACCESS_TOKEN",
+            "accessTokenSecret" : "ACCESS_TOKEN_SECRET"
         }
     },
     "comment for twitter": [
@@ -196,11 +196,6 @@ TODO: Add content
     ]
 }
 ----
-<1> du
-<2> bi
-<3> dam
-<4> di
-<5> dumm
 
 == FXML and CSS ==
 
