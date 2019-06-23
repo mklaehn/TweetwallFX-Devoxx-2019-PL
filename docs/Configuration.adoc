@@ -28,17 +28,17 @@ The Configuration files are searched and read from
 
 The Configuration files - those with the standard configuration file name and those identified from the <<orgtweetwallconfigfileName,System Property org.tweetwall.config.fileName>> - are each read in order and merged into one combined virtual file.
 
-The algorithm for the combination starts out with an empty JSON Object and - one by one - merges each configuration fragment onto that JSON (<<merging-json-objects>>). 
+The algorithm for the combination starts out with an empty JSON Object and - one by one - merges each configuration fragment onto that JSON - handled by <<merging-json-objects>>.
 
 ===== Merging JSON Objects =====
 
-Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java[Configuration]::link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L307-L318[mergeMap]
+Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L307-L318[Configuration::mergeMap]
 
-Two JSON Objects are merged by merging the attributes of those JSON objects (<<merging-json-attribute-value,Merging JSON Attribute Value>>).
+Two JSON Objects are merged by merging the attributes of those JSON objects - handled by <<merging-json-attribute-value,Merging JSON Attribute Value>>.
 
 ===== Merging JSON Attribute Value =====
 
-Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java[Configuration]::link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L320-L348[mergeValue]
+Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L320-L348[Configuration::mergeValue]
 
 The result of a merge of two Attribute Values - in general terms - is either
 
@@ -55,32 +55,23 @@ Merging two JSON Objects will be handled by <<merging-json-objects,Merging JSON 
 
 The combined Configuration - in effect a JSON Object - may contain several configuration sections in the form of the JSONs attributes.
 
-==== google ====
-
 ==== devoxxCFP ====
+==== filterchains ====
+==== google ====
+==== tweetwall ====
+==== twitter ====
+==== org.tweetwallfx.google.vision.ImageContentFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config ====
 
+=== Example File ===
 
 .tweetwallConfig.json
 [source,json]
 ----
 {
-    "file comment": [
-        "Any block with comment in the name will not be evaluated by Tweetwall as",
-        "it looks at dedicated attribute in the configuration.",
-        "",
-        "The configuration is merged together from tweetwallConfig.json files located",
-        "in the jar files, the user home dir, the etc dir of a distribution archive and",
-        "the distribution dir itself - in that order.",
-        "",
-        "The merge is performed by overlapping objects together. The last value set",
-        "wins. Any list is always replaced in its entirety.",
-        "",
-        "If you place a file named tweetwallConfig.json into the home dir of the",
-        "user running the tweetwall then you've created your local configuration",
-        "file. You can then set the oauth and credential paths/tokens in that file",
-        "without having to commit those keys and tokens."
-    ],
-
     "off_google": {
         "credentialFilePath": "/Users/<USER>/googleCredentials.json"
     },
