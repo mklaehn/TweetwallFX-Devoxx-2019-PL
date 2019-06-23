@@ -67,6 +67,7 @@ Settings for interaction with Google APIs.
 
 sectionName:: `google`
 class:: `org.tweetwallfx.google.GoogleSettings` (link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/GoogleSettings.java[source])
+converted to POJO:: After raw Configuration Data has been loaded
 
 .Minimal configuration structure
 [source,groovy]
