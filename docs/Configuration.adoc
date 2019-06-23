@@ -34,7 +34,7 @@ The algorithm for the combination starts out with an empty JSON Object and - one
 
 Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L307-L318[Configuration::mergeMap]
 
-Two JSON Objects are merged by merging the attributes of those JSON objects - handled by <<merging-json-attribute-value,Merging JSON Attribute Value>>.
+Two JSON Objects are merged by merging the attributes of the new JSON Object onto those of the existing JSON Object - handled by <<merging-json-attribute-value,Merging JSON Attribute Value>>.
 
 ===== Merging JSON Attribute Value =====
 
