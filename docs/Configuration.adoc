@@ -14,7 +14,7 @@ TODO: Add content
 
 == System Properties ==
 
-Certain values are configurable via System Properties. They can be set e.g. by adding a jvmArg on a JavaExec task in gradle or any similiar way. Setting these values is usually used during development or to test a configuration as these property values will be used instead of a value derived at runtime. This can be the case when testing a schedule display for a day and time in the future.
+Certain values are configurable via System Properties. They can be set e.g. by adding a link:++https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:jvmArgs(java.lang.Object[])++[jvmArg] on a https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html[JavaExec] task in gradle or any similiar way. Setting these values is usually used during development or to test a configuration as these property values will be used instead of a value derived at runtime. This can be the case when testing a schedule display for a day and time in the future.
 
 === org.tweetwallfx.scheduledata.day ===
 
