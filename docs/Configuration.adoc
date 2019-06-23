@@ -2,13 +2,13 @@
 
 = Ways to configure Tweetwall =
 
-TODO: Short description
+There are several ways to influence and configure a Tweetwall. Some of these require to be built into the artefact - like <<fxml-and-css,FXML and CSS>> while others can be set at runtime - like <<system-properties,System Properties>> - and others via <<configuration-file,Configuration Files>> being read at runtime.
 
 == Configuration File ==
 
 TODO: Add content
 
-== FXML / CSS ==
+== FXML and CSS ==
 
 TODO: Add content
 
