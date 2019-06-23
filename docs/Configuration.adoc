@@ -46,10 +46,10 @@ TODO: Add content
         "debugEnabled" : true,
         "extendedMode" : true,
         "oauth" : {
-            "consumerKey" : "RWFaX3BGP8xLbrOy9j87VaS6b",
-            "consumerSecret" : "ajaLCUEEJ4C4BYFfX23fwkeprAFczx2sCuZOaWwEqiSqhzmxAU",
-            "accessToken" : "927870246828036096-OuQlPLGD2ik7uUU9ei0s3J1dXB6bGmg",
-            "accessTokenSecret" : "D5cUfQkEyDiIBbVUKikpcN7mFFnZtQl5OpVGTvcrvUlht"
+            "consumerKey" : "CONSUMER_KEY",
+            "consumerSecret" : "CONSUMER_SECRET",
+            "accessToken" : "ACCESS_TOKEN",
+            "accessTokenSecret" : "ACCESS_TOKEN_SECRET"
         }
     },
     "comment for twitter": [
