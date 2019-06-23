@@ -56,15 +56,61 @@ Merging two JSON Objects will be handled by <<merging-json-objects,Merging JSON 
 The combined Configuration - in effect a JSON Object - may contain several configuration sections in the form of the JSONs attributes.
 
 ==== devoxxCFP ====
+TODO: Add content
+
 ==== filterchains ====
+TODO: Add content
+
 ==== google ====
+
+Settings for interaction with Google APIs.
+
+sectionName:: `google`
+class:: `org.tweetwallfx.google.GoogleSettings` (link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/GoogleSettings.java[source])
+
+.Minimal configuration structure
+[source,groovy]
+----
+{
+  "google": {
+    "credentialFilePath",
+    "cloudVision": {
+      "featureTypes"
+    }
+  }
+}
+----
+
+[options="header", cols="5*"]
+|===
+| Name | Type | Required | Default Value | Description
+
+| google | link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/GoogleSettings.java[GoogleSettings] | NO | | Name of Configuration section
+| credentialFilePath | String | NO | `null` | Path to the credentials required for the authentication with Google APIs. Credentials file can be gotten from https://console.cloud.google.com.
+| cloudVision | link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/vision/CloudVisionSettings.java[CloudVisionSettings] | NO | `null` | Settings concerning the Google Cloud Vision APIs.
+| featureTypes | Set<link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/vision/CloudVisionSettings.java#L52-L65[FeatureType]> | NO | `null` | Sets the features that are to requested in a request for image analysis by Google Cloud Vision API.
+|===
+
 ==== tweetwall ====
+TODO: Add content
+
 ==== twitter ====
+TODO: Add content
+
 ==== org.tweetwallfx.google.vision.ImageContentFilterStep$Config ====
+TODO: Add content
+
 ==== org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config ====
+TODO: Add content
+
 ==== org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config ====
+TODO: Add content
+
 ==== org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config ====
+TODO: Add content
+
 ==== org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config ====
+TODO: Add content
 
 === Example File ===
 
@@ -72,18 +118,6 @@ The combined Configuration - in effect a JSON Object - may contain several confi
 [source,json]
 ----
 {
-    "off_google": {
-        "credentialFilePath": "/Users/<USER>/googleCredentials.json"
-    },
-    "comment for google": [
-        "Google Cloud Vision (optional usage for Twitter Feed filtering) requires",
-        "registration of credentials file from https://console.cloud.google.com",
-        "call frequency is relatively low in case Google Cloud Vision is used as",
-        "one of the last filter steps in the filter chain.",
-        "In order to register the credentials rename the previous block to 'google'",
-        "and set the correct path for the 'credentialFilePath' key and you're done",
-        "(for this)."
-    ],
 
     "twitter" : {
         "debugEnabled" : true,
