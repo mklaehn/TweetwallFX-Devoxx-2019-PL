@@ -8,6 +8,195 @@ There are several ways to influence and configure a Tweetwall. Some of these req
 
 TODO: Add content
 
+.tweetwallConfig.json
+[source,json]
+----
+{
+    "file comment": [
+        "Any block with comment in the name will not be evaluated by Tweetwall as",
+        "it looks at dedicated attribute in the configuration.",
+        "",
+        "The configuration is merged together from tweetwallConfig.json files located",
+        "in the jar files, the user home dir, the etc dir of a distribution archive and",
+        "the distribution dir itself - in that order.",
+        "",
+        "The merge is performed by overlapping objects together. The last value set",
+        "wins. Any list is always replaced in its entirety.",
+        "",
+        "If you place a file named tweetwallConfig.json into the home dir of the",
+        "user running the tweetwall then you've created your local configuration",
+        "file. You can then set the oauth and credential paths/tokens in that file",
+        "without having to commit those keys and tokens."
+    ],
+
+    "off_google": {
+        "credentialFilePath": "/Users/<USER>/googleCredentials.json"
+    },
+    "comment for google": [
+        "Google Cloud Vision (optional usage for Twitter Feed filtering) requires",
+        "registration of credentials file from https://console.cloud.google.com",
+        "call frequency is relatively low in case Google Cloud Vision is used as",
+        "one of the last filter steps in the filter chain.",
+        "In order to register the credentials rename the previous block to 'google'",
+        "and set the correct path for the 'credentialFilePath' key and you're done",
+        "(for this)."
+    ],
+
+    "twitter" : {
+        "debugEnabled" : true,
+        "extendedMode" : true,
+        "oauth" : {
+            "consumerKey" : "RWFaX3BGP8xLbrOy9j87VaS6b",
+            "consumerSecret" : "ajaLCUEEJ4C4BYFfX23fwkeprAFczx2sCuZOaWwEqiSqhzmxAU",
+            "accessToken" : "927870246828036096-OuQlPLGD2ik7uUU9ei0s3J1dXB6bGmg",
+            "accessTokenSecret" : "D5cUfQkEyDiIBbVUKikpcN7mFFnZtQl5OpVGTvcrvUlht"
+        }
+    },
+    "comment for twitter": [
+        "Block is used for the configuration of Twitter4J API and its required",
+        "configuration of the Twitter API key and tokens from",
+        "https://developer.twitter.com/",
+        "",
+        "I've created a set for you for the duration of the event, so you won't",
+        "need to change anything here except you want to use your own."
+    ],
+
+    "tweetwall": {
+        "query": "#devoxx"
+    },
+    "comment for tweetwall": [
+        "This block configures some general properties for the Tweetwall instance",
+        "being run. Those include the window title, the javafx stylecheet, and most",
+        "important for you: the query string for the Twitter Stream used to display",
+        "the tweets.",
+        "",
+        "You can list several words there. If any of those words appear in a tweet",
+        "it will be processed by the Tweetwall. The words can be regular words,",
+        "hashtags or user handles."
+    ],
+
+    "customize_filterchains": {
+        "chains": {
+            "twitter": {
+                "domainObjectClassName": "org.tweetwallfx.tweet.api.Tweet",
+                "defaultResult": true,
+                "filterSteps": [
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.google.vision.ImageContentFilterStep"
+                    }
+                ]
+            }
+        }
+    },
+    "comment for customize_filterchain": [
+        "The origianl block name is filterchain. If you rename the previous block",
+        "to that name you can customize the filterchains.",
+        "",
+        "The 'twitter' chain is used to evaluate if a Tweet received from Twitter",
+        "(using the query from the 'tweetwall' block) is to be processed by the",
+        "Tweetwall. An object - in this case an object of the declared",
+        "'domainObjectClassName' is passed in order through the filter step. As",
+        "soon as any one of those finds a definite reason to accept/reject the",
+        "object it is handled accordingly. If no definite reason was found then",
+        "the object is accepted if 'defaultResult' is true.",
+        "",
+        "The steps themselves are also configurable and will follow hereafter in",
+        "their default configuration as they are commited in the github repository.",
+        "",
+        "In case you don't/have Google Cloud Vision filtering you can remove the step",
+        "using that feature (i.e. 'org.tweetwallfx.google.vision.ImageContentFilterStep'."
+    ],
+
+    "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config": {
+        "checkRetweeted": false,
+        "userHandles": [
+            "Devoxx"
+        ]
+    },
+    "comment for org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config": [
+        "This block configures the aforementioned filter step in that it declares",
+        "the user handler of twitter user that will have all their tweets processed",
+        "by the Tweetwall display."
+    ],
+
+    "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config": {
+        "checkRetweeted": true,
+        "maxLength": 15
+    },
+    "comment for org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config": [
+        "This block configures the aforementioned filter step in that it declares",
+        "the maximum length of any hashtag in a tweet that might still be acceptable",
+        "by other filter steps. If a hashtag has a length larger than declared here",
+        "then the tweet will be rejected from being processed by the Tweetwall",
+        "display.",
+        "This is a low level attempt at rejecting bots and others from junping on",
+        "a trending hashtag."
+    ],
+
+    "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config": {
+        "checkRetweeted": true,
+        "userHandles": [
+            "turkeytoday"
+        ]
+    },
+    "comment for org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config": [
+        "This block configures the aforementioned filter step in that it declares",
+        "the user handler of twitter user that will have noone of their tweets",
+        "processed by the Tweetwall display.",
+        "@turkeytoday crossposted with the devoxx hashtag last year during Devoxx BE."
+    ],
+
+    "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config": {
+        "count": 25
+    },
+    "comment for org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config": [
+        "This block configures the aforementioned filter step in that it declares",
+        "the minimum number of followers a twitter user has to have to not have his/her tweets rejected.",
+        "This is a low level attempt at rejecting bots and others from junping on",
+        "a trending hashtag as was the case 2017 with the russian spam bots."
+    ],
+
+    "org.tweetwallfx.google.vision.ImageContentFilterStep$Config": {
+        "checkRetweeted": true,
+        "adult": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        },
+        "medical": {
+            "acceptableLikelyhood": "UNLIKELY"
+        },
+        "racy": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        },
+        "spoof": {
+            "acceptableLikelyhood": "UNLIKELY"
+        },
+        "violence": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        }
+    },
+    "comment for org.tweetwallfx.google.vision.ImageContentFilterStep$Config": [
+        "This block configures the aforementioned filter step in that it declares",
+        "the acceptableLikelyhood (see Google Cloud Vision API) that has to be",
+        "reached for images in a tweet in order to be processed by the Tweetwall",
+        "display. If the tweet does not have an image the tweet is passed to the",
+        "next filter step.",
+        "This step took about 1200ms a call last year during devoxx be."
+    ]
+}
+----
+
 == FXML and CSS ==
 
 TODO: Add content
