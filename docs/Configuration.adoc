@@ -1,17 +1,17 @@
 :toc:
 :toclevels: 3
 
-= Ways to configure Tweetwall =
+= Ways to configure Tweetwall
 
 There are several ways to influence and configure a Tweetwall. Some of these require to be built into the artefact, like <<fxml-and-css,FXML and CSS>>, while others can be set at runtime, like <<system-properties,System Properties>>, and others via <<configuration-file,Configuration Files>> being read at runtime.
 
-== Configuration File ==
+== Configuration File
 
-=== Overview ===
+=== Overview
 
 Most of the configuration of the Tweetwall is done using configuration files. The File format JSON and the file content is assumed to be a valid JSON Object. This enabled the compartmentalized configuration in various places and combination of the compartmentalized parts into a combined form which then represents the actual configuration being used by the application.
 
-==== Location of Configuration Files ====
+==== Location of Configuration Files
 
 The standard name of the configuration files is `tweetwallConfig.json`. A custom configuration file name can be specified using the <<orgtweetwallconfigfileName,System Property org.tweetwall.config.fileName>>. 
 
@@ -24,19 +24,19 @@ The Configuration files are searched and read from
 
 `<FILE_NAME>` in this context is first the standard configuration file name `tweetwallConfig.json`. In case the <<orgtweetwallconfigfileName,System Property org.tweetwall.config.fileName>> is set and its value is a different value than the standard configuration file name then those files will be read afterwards.
 
-==== Combination of compartmentalized Configuration ====
+==== Combination of compartmentalized Configuration
 
 The Configuration files - those with the standard configuration file name and those identified from the <<orgtweetwallconfigfileName,System Property org.tweetwall.config.fileName>> - are each read in order and merged into one combined virtual file.
 
 The algorithm for the combination starts out with an empty JSON Object and - one by one - merges each configuration fragment onto that JSON - handled by <<merging-json-objects>>.
 
-===== Merging JSON Objects =====
+===== Merging JSON Objects
 
 Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L307-L318[Configuration::mergeMap]
 
 Two JSON Objects are merged by merging the attributes of the new JSON Object onto those of the existing JSON Object - handled by <<merging-json-attribute-value,Merging JSON Attribute Value>>.
 
-===== Merging JSON Attribute Value =====
+===== Merging JSON Attribute Value
 
 Code: link:https://github.com/TweetWallFX/TweetwallFX/blob/master/config/src/main/java/org/tweetwallfx/config/Configuration.java#L320-L348[Configuration::mergeValue]
 
@@ -51,17 +51,17 @@ Merging two JSON Arrays will result in the new value to replace the previous val
 
 Merging two JSON Objects will be handled by <<merging-json-objects,Merging JSON Objects>>.
 
-=== Configuration sections ===
+=== Configuration sections
 
 The combined Configuration - in effect a JSON Object - may contain several configuration sections in the form of the JSONs attributes.
 
-==== devoxxCFP ====
+==== devoxxCFP
 TODO: Add content
 
-==== filterchains ====
+==== filterchains
 TODO: Add content
 
-==== google ====
+==== google
 
 Settings for interaction with Google APIs.
 
@@ -92,28 +92,28 @@ converted to POJO:: After raw Configuration Data has been loaded
 | featureTypes | Set<link:https://github.com/TweetWallFX/TweetwallFX/blob/master/google-cloud/src/main/java/org/tweetwallfx/google/vision/CloudVisionSettings.java#L52-L65[FeatureType]> | NO | `null` | Sets the features that are to requested in a request for image analysis by Google Cloud Vision API.
 |===
 
-==== tweetwall ====
+==== tweetwall
 TODO: Add content
 
-==== twitter ====
+==== twitter
 TODO: Add content
 
-==== org.tweetwallfx.google.vision.ImageContentFilterStep$Config ====
+==== org.tweetwallfx.google.vision.ImageContentFilterStep$Config
 TODO: Add content
 
-==== org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config
 TODO: Add content
 
-==== org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config
 TODO: Add content
 
-==== org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config
 TODO: Add content
 
-==== org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config ====
+==== org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config
 TODO: Add content
 
-=== Example File ===
+=== Example File
 
 .tweetwallConfig.json
 [source,json]
@@ -275,15 +275,15 @@ TODO: Add content
 }
 ----
 
-== FXML and CSS ==
+== FXML and CSS
 
 TODO: Add content
 
-== System Properties ==
+== System Properties
 
 Certain values are configurable via System Properties. They can be set e.g. by adding a link:++https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:jvmArgs(java.lang.Object[])++[jvmArg] on a https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html[JavaExec] task in gradle or any similiar way. Setting these values is usually used during development or to test a configuration as these property values will be used instead of a value derived at runtime. This can be the case when testing a schedule display for a day and time in the future.
 
-=== org.tweetwallfx.scheduledata.day ===
+=== org.tweetwallfx.scheduledata.day
 
 This property sets the value of the day used for displaying schedule based data instead of the determined day name.
 
@@ -300,7 +300,7 @@ Example values may be:
 * `saturday`
 * `sunday`
 
-=== org.tweetwallfx.scheduledata.time ===
+=== org.tweetwallfx.scheduledata.time
 
 This property sets the value of the time used for displaying schedule based data instead of the determined time.
 
@@ -312,7 +312,7 @@ Example values may be:
 * `09:53Z`
 * `14:15Z`
 
-=== org.tweetwallfx.scheduledata.proposal ===
+=== org.tweetwallfx.scheduledata.proposal
 
 This property sets the ID of a Talk to display.
 
@@ -323,7 +323,7 @@ Example values may be:
 * `CTH-5247`
 * or any other Talk ID from the CFP.
 
-=== org.tweetwall.config.fileName ===
+=== org.tweetwall.config.fileName
 
 This property sets a custom file name (including extension) for Configuration files to be read when combining the compartmentalized configuration segments into a combined data structure.
 
